@@ -1,5 +1,4 @@
 "use client";
-import { Navbar } from "@/app/components/NavbarAdmin";
 import toast from 'react-hot-toast';
 import { useRouter } from "next/navigation";
 
@@ -10,11 +9,13 @@ export default function Login() {
 
   const router = useRouter();
 
+  //Estructura del json que se le va a pasar a la api
   const [formData, setFormData] = useState({
     usuario: "",
     password: "",
   });
 
+  //Extrae la infromacion de forma dinamica
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -24,7 +25,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      // Simulando un envío a API
+      //Se hace un llamado a la api
       const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,6 +40,14 @@ export default function Login() {
       if (response.ok) {
         toast.success("Inicio de sesión exitoso");
 
+        //Se guarda la informacion del login en una variable local
+        localStorage.setItem("usuario", JSON.stringify({
+          nombreUsuario: data.nombreUsuario,
+          tipo: data.tipoUsuario,
+          cedula: data.cedula,
+        }));
+
+        //Dependiendo del tipo de usuario lo mandamos a una vista u otra
         if (data.tipoUsuario === 'normal')
         {
           router.push("/user")
@@ -52,7 +61,7 @@ export default function Login() {
         toast.error(data.error || "Error desconocido");
       }
       
-      
+
     } catch (error) {
       console.error("Error al enviar:", error);
       toast.error("Error al conectar con el servidor");
@@ -62,14 +71,20 @@ export default function Login() {
   return (
 
     <>
-    <Navbar/>
     <main>
     
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4 mt-[-50px]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4">
 
-      
+    <div className="flex items-center gap-4 mb-8">
+      <span className="text-4xl font-bold text-white tracking-wide">Voltano</span>
+      <img
+        src="/rayo.jpg"
+        alt="Logo Voltano"
+        className="w-16 h-16 rounded-full shadow-md"
+      />
+    </div>
 
-      <h2 className="text-xl mb-6">Login</h2>
+      <h2 className="text-xl mb-6 text-left w-full max-w-sm">Login</h2>
 
       <form
         onSubmit={handleSubmit}

@@ -3,15 +3,13 @@ import db from '@/lib/db';
 
 
 export async function POST(request: Request) {
-  const { nombreUsuario, password } = await request.json();
+  const { nombreUsuario, password } = await request.json(); // Hace el request del json al front
 
   try {
     const [rows]: any = await db.query(
       'SELECT * FROM Usuarios WHERE NombreUsuario = ?', // ?' Es un placeholder, se usa por seguridad para evitar sql injection
       [nombreUsuario]
     );
-
-    console.log(password)
 
     // Si esta vacio, no encontro
     if (rows.length === 0) {
@@ -26,7 +24,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Contraseña incorrecta' }, { status: 401 });
     }
 
-    return NextResponse.json({ mensaje: 'Login exitoso', tipoUsuario: usuario.TipoUsuario });
+    return NextResponse.json({ mensaje: 'Login exitoso', tipoUsuario: usuario.TipoUsuario , nombreUsuario: usuario.NombreUsuario , cedula: usuario.CedulaEmpleado });
+  
   } catch (error) {
     console.error('Error en la API de login:', error);
     return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });

@@ -3,17 +3,17 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export const NavbarUSer = () => {
+export const NavbarUser = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Aquí puedes limpiar sesión si la usas, luego redirigir al login
+    localStorage.removeItem("usuario"); // En caso de darle a salir, borra los datos del login
     router.push("/");
   };
 
   return (
     <nav className="w-full h-16 bg-gray-900 text-white flex justify-between items-center px-6 shadow-md">
-      {/* Navegación izquierda */}
+      {/* Botones de la izquierda */}
       <div className="flex gap-6 items-center">
         <button onClick={() => router.push("/user")} className="hover:underline">
           Inicio

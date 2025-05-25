@@ -7,13 +7,13 @@ export const Navbar = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Aquí puedes limpiar sesión si la usas, luego redirigir al login
+    localStorage.removeItem("usuario"); // En caso de darle a salir, borra los datos del login
     router.push("/");
   };
 
   return (
     <nav className="w-full h-16 bg-gray-900 text-white flex justify-between items-center px-6 shadow-md">
-      {/* Navegación izquierda */}
+      {/* Botones de la izquierda */}
       <div className="flex gap-6 items-center">
         <button onClick={() => router.push("/admin")} className="hover:underline" >
           Inicio
