@@ -8,13 +8,10 @@ export async function DELETE(_: NextRequest, { params }: { params: { id: string 
 
     //Primero borramos los materiales de historial de pedidos asociados al pedido
 
-    await db.query(
-        'DELETE FROM MaterialHistorialPedidos WHERE CodigoPedido = ?',[id]
-    )
 
     const [result]: any = await db.query(
-      "DELETE FROM HistorialPedidos WHERE CodigoPedido = ?", //Borramos el pedido con el id
-      [id]
+      "CALL EliminarPedidoYMateriales(?)",[id] //Borramos el pedido con el id
+
     );
 
     if (result.affectedRows === 0) {
