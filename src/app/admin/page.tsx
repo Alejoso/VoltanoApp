@@ -62,13 +62,6 @@ export default function admin() {
           {/* Botones */}
           <div className="flex flex-col items-center gap-6">
             <button
-              onClick={() => router.push("/user/viewOrders")}
-              className="w-60 h-16 text-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-2xl shadow-lg transition transform duration-200 hover:scale-105"
-            >
-              Ver pedidos
-            </button>
-
-            <button
               onClick={() => router.push("/admin/modify")}
               className="w-60 h-16 text-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-2xl shadow-lg transition transform duration-200 hover:scale-105"
             >

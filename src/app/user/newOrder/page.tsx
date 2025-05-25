@@ -9,8 +9,6 @@ export default function newOrder() {
   const router = useRouter();
   const toastShown = useRef(false); //Para evitar que el toast se muestre mas de una vez
 
-  const [nombre, setNombre] = useState("");
-
   useEffect(() => {
 
     const datos = localStorage.getItem("usuario"); //Sacar la info del usuario actualmente registrado
@@ -20,12 +18,6 @@ export default function newOrder() {
       toastShown.current = true;
       toast.error("No tienes permisos para estar en esta vista")
       router.push("/")
-    }
-
-    //Sacar los datos del json del usuario
-    if (datos) {
-      const usuario = JSON.parse(datos);
-      setNombre(usuario.nombreUsuario);
     }
     
   }, []);
@@ -80,6 +72,7 @@ export default function newOrder() {
       if (response.ok) {
         toast.success("Pedido enviado con éxito");
         setMateriales([{ codigo: "", cantidad: "" }]);
+        router.back();
       } else {
         toast.error(data.error || "Error al guardar el pedido");
       }

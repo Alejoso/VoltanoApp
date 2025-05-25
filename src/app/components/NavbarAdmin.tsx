@@ -18,9 +18,6 @@ export const Navbar = () => {
         <button onClick={() => router.push("/admin")} className="hover:underline" >
           Inicio
         </button>
-        <button onClick={() => router.push("/user/viewOrders")} className="hover:underline">
-          Ver Pedidos
-        </button>
         <button onClick={() => router.push("/admin/modify")} className="hover:underline">
           Gestionar pedidos
         </button>
