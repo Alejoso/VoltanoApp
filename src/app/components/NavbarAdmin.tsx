@@ -21,6 +21,9 @@ export const Navbar = () => {
         <button onClick={() => router.push("/admin/modify")} className="hover:underline">
           Gestionar pedidos
         </button>
+        <button onClick={() => router.push("/admin/add")} className="hover:underline">
+          Añadir algo
+        </button>
         <button onClick={handleLogout} className="hover:underline text-red-400">
           Salir
         </button>
