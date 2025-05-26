@@ -32,7 +32,7 @@ export const Navbar = () => {
       {/* Logo y título a la derecha */}
       <div className="flex items-center gap-2">
         <span className="text-lg font-bold">Voltano</span>
-        <img src="/rayo.jpg" alt="Rayo voltano" className="w-8 h-8 rounded-full" />
+        <img src="/rayo.png" alt="Rayo voltano" className="w-8 h-8 rounded-full" />
       </div>
     </nav>
   );

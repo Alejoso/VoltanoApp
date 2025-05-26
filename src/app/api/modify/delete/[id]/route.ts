@@ -11,7 +11,6 @@ export async function DELETE(_: NextRequest, { params }: { params: { id: string 
 
     const [result]: any = await db.query(
       "CALL EliminarPedidoYMateriales(?)",[id] //Borramos el pedido con el id
-
     );
 
     if (result.affectedRows === 0) {

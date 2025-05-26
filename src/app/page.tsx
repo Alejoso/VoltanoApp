@@ -78,7 +78,7 @@ export default function Login() {
     <div className="flex items-center gap-4 mb-8">
       <span className="text-4xl font-bold text-white tracking-wide">Voltano</span>
       <img
-        src="/rayo.jpg"
+        src="/rayo.png"
         alt="Logo Voltano"
         className="w-16 h-16 rounded-full shadow-md"
       />
